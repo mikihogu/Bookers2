@@ -1,0 +1,69 @@
+<p id="notice">
+  <%= flash[:notice] %>
+</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <h2>User info</h2>
+      <%= image_tag @book.user.get_profile_image(100,100) %>
+      <table class="table">
+        <tbody>
+          <tr></tr>
+          <tr>
+            <th>name</th>
+            <th><%= @book.user.name %></th>
+          </tr>
+          <tr>
+            <th>introduction</th>
+            <th><%= @book.user.introduction %></th>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="row">
+        <% if @book.user==current_user %>
+          <%= link_to edit_user_path(current_user), class: "btn btn-outline-secondary btn-block" do %>
+            <i class="fas fa-user-cog"></i>
+          <% end %>
+        <% else %>
+          <%= link_to user_path(current_user), class: "btn btn-outline-secondary btn-block" do %>
+            <i class="fas fa-user-cog"></i>
+          <% end %>
+        <% end %>
+      </div>
+
+      <%= render 'list' %>
+
+    </div>
+
+    <div class="col-md-8 offset-md-1">
+
+      <h2>Book detail</h2>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>
+              <%= link_to user_path(@book.user.id) do %>
+                <%= image_tag @book.user.get_profile_image(100,100) %><br>
+                <%= @book.user.name %>
+              <% end %>
+            </td>
+            <td><%= link_to @book.title %></td>
+            <td><%= @book.body %></td>
+            <td>
+              <% if @book.user==current_user %>
+                <%= link_to "Edit", edit_book_path, class: "btn btn-sm btn-success" %>
+              <% end %>
+            </td>
+            <td>
+              <% if @book.user==current_user %>
+                <%= link_to "Destroy", book_path, class: "btn btn-sm btn-danger", method: :delete, "data-confirm" => "Are you sure?" %>
+              <% end %>
+            </td>
+          </tr>
+        <tbody>
+      </table>
+    </div>
+  </div>
+</div>
