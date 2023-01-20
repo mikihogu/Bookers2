@@ -17,20 +17,15 @@
           </tr>
         </tbody>
       </table>
-      
       <div class="row">
         <%= link_to edit_user_path(current_user), class: "btn btn-outline-secondary btn-block" do %>
           <i class="fas fa-user-cog"></i>
         <% end %>
       </div>
-      
       <%= render 'books/list' %>
-
     </div>
-
     <div class="col-md-8 offset-md-1">
       <h2>Users</h2>
-
       <table class="table">
         <thead>
           <tr>
@@ -40,19 +35,19 @@
           </tr>
         </thead>
         <tbody>
-        <% @users.each do |user| %>
-          <tr>
-            <td>
-              <%= image_tag user.get_profile_image(100,100) %>
-            </td>
-            <td>
-              <%= user.name %>
-            </td>
-            <td>
-              <%= link_to "Show", user_path(user.id) %>
-            </td>
-          </tr>
-        <% end %>
+          <% @users.each do |user| %>
+            <tr>
+              <td>
+                <%= image_tag user.get_profile_image(100,100) %>
+              </td>
+              <td>
+                <%= user.name %>
+              </td>
+              <td>
+                <%= link_to "Show", user_path(user.id) %>
+              </td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
