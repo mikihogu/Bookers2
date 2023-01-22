@@ -20,7 +20,7 @@
       <%= form_with model: @user do |f| %>
         <div class="form-group mb-3>">
           <label for="user_name">Name</label><br>
-          <%= f.text_field :name, autofocus: true, id: "user_name" %>
+          <%= f.text_field :name, style: "width:100%", autofocus: true, id: "user_name" %>
         </div>
         <div class="form-group mb-3>">
           <label for="user_image">Image</label><br>
@@ -28,7 +28,7 @@
         </div>
         <div class="form-group mb-3>">
           <label for="user_introduction">Introduction</label><br>
-          <%= f.text_area :introduction %>
+          <%= f.text_area :introduction, style: "width:100%" %>
         </div>
         <div class="form-group mb-3>">
           <%= f.submit 'Update User', class: "btn btn-secondary mb-3"  %>
